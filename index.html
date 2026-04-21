@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Rita Alam · Full‑Stack Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f5;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            line-height: 1.5;
+            padding: 3rem 1.5rem;
+            color: #1a2c3e;
+        }
+
+        .portfolio {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .content {
+            padding: 2.5rem 2.8rem;
+        }
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 3px solid #e7edf2;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .name-title h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1F3B4C, #2C5A6E);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.01em;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #2c6979;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            border-left: 4px solid #2c6979;
+            padding-left: 1rem;
+        }
+
+        .quick-contact {
+            text-align: right;
+            background: #f8fafc;
+            padding: 0.8rem 1.2rem;
+            border-radius: 1.5rem;
+        }
+
+        .quick-contact p {
+            font-size: 0.85rem;
+            margin: 0.2rem 0;
+            color: #2c3e44;
+        }
+
+        .quick-contact a {
+            color: #1e6f5c;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .quick-contact a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            display: inline-block;
+            background: #eef3f7;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            margin-bottom: 1.5rem;
+            color: #1f4e5e;
+            letter-spacing: -0.2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            border: 1px solid #e2edf2;
+            padding: 1.5rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: #bdd9e4;
+            box-shadow: 0 12px 20px -12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .project-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1f4e5e;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-links {
+            font-size: 0.7rem;
+            font-weight: normal;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .project-links a {
+            color: #2c7a6e;
+            text-decoration: none;
+            word-break: break-all;
+            background: #f0f6f9;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            transition: background 0.2s;
+        }
+
+        .project-links a:hover {
+            background: #e0edf2;
+            text-decoration: underline;
+        }
+
+        .project-desc {
+            color: #2c4b5c;
+            margin: 0.75rem 0;
+            font-size: 0.92rem;
+            flex: 1;
+        }
+
+        .project-desc ul {
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+        }
+
+        .project-desc li {
+            margin: 0.2rem 0;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0 0.6rem;
+        }
+
+        .tech-badge {
+            background: #eef2f5;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #1f5e68;
+            letter-spacing: 0.2px;
+        }
+
+        .team-badge {
+            display: inline-block;
+            background: #e0f0ea;
+            font-size: 0.7rem;
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            color: #1e6f5c;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            width: fit-content;
+        }
+
+        .about-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .about-box {
+            flex: 2;
+            background: #fafeff;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid #e2edf2;
+        }
+
+        .skills-box {
+            flex: 1.5;
+            background: #fafeff;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid #e2edf2;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 0.8rem;
+        }
+
+        .skill-item {
+            background: white;
+            border: 1px solid #cbdbe2;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #1e4a5f;
+        }
+
+        .contact-footer {
+            margin-top: 2rem;
+            background: #f1f6f9;
+            border-radius: 1.5rem;
+            padding: 1.3rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: #1f5e6b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .contact-links a:hover {
+            color: #0d3f48;
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce7ed;
+            margin: 1rem 0;
+        }
+
+        .additional-note {
+            background: #fef9e6;
+            border-radius: 1.2rem;
+            padding: 1.2rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #e6b12e;
+            font-size: 0.9rem;
+        }
+
+        .dual-link-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.7rem;
+            background: #eef2fa;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            color: #1f5e68;
+        }
+
+        @media (max-width: 720px) {
+            .content {
+                padding: 1.5rem;
+            }
+            .hero {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .quick-contact {
+                text-align: left;
+                width: 100%;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .project-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0.2in;
+            }
+            .portfolio {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .project-card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            .contact-footer {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="portfolio">
+    <div class="content">
+        <!-- Hero header -->
+        <div class="hero">
+            <div class="name-title">
+                <h1>Rita Alam</h1>
+                <div class="tagline">Full‑Stack Developer · Scalable Web Apps & Business Platforms</div>
+                <div style="margin-top: 0.8rem; font-size: 0.95rem; color: #3e6b7c;">
+                    I build scalable web applications and custom business platforms.<br>
+                    Specializing in e-commerce systems, dashboards, and backend architecture.
+                    I work with a team to deliver complete and reliable solutions for businesses.
+                </div>
+            </div>
+            <div class="quick-contact">
+                <p>✉️ <a href="mailto:rita.alam39@gmail.com">rita.alam39@gmail.com</a></p>
+                <p>🔗 <a href="https://www.linkedin.com/in/rita-alam-273996222" target="_blank">LinkedIn</a> · <a href="https://github.com/rita346" target="_blank">GitHub</a></p>
+                <p>📍 Remote · Available for collaboration</p>
+            </div>
+        </div>
+
+        <!-- PROJECTS section -->
+        <section>
+            <div class="section-title">🚀 Core Projects</div>
+            <div class="projects-grid">
+                <!-- Teelaunch Platform - showing both websites prominently -->
+                <div class="project-card">
+                    <div class="project-title">
+                        Teelaunch Platform (v1 → v2)
+                        <div class="project-links">
+                            <a href="https://app.teelaunch.com" target="_blank" rel="noopener">🌐 app.teelaunch.com</a>
+                            <a href="https://app.teelaunchlb.com/" target="_blank" rel="noopener">⚡ app.teelaunchlb.com</a>
+                        </div>
+                    </div>
+                    <div class="project-desc">
+                        Built and improved a large-scale printing platform handling orders, file uploads, and workflows.
+                        <ul>
+                            <li>Designed backend architecture</li>
+                            <li>Optimized performance and queries</li>
+                            <li>Implemented authentication and order management</li>
+                            <li>Integrated AWS S3</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Laravel</span>
+                        <span class="tech-badge">MySQL</span>
+                        <span class="tech-badge">AWS S3</span>
+                        <span class="tech-badge">React</span>
+                    </div>
+                    <div class="team-badge">👥 Worked with a team to deliver the platform</div>
+                </div>
+
+                <!-- Obuy Cloud -->
+                <div class="project-card">
+                    <div class="project-title">
+                        Obuy Cloud
+                        <span class="project-links"><a href="https://obuy.cloud/en/" target="_blank">obuy.cloud</a></span>
+                    </div>
+                    <div class="project-desc">
+                        Developed an e-commerce platform supporting products and orders.
+                        <ul>
+                            <li>Built core e-commerce logic</li>
+                            <li>Designed APIs</li>
+                            <li>Focused on performance</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Laravel</span>
+                        <span class="tech-badge">MySQL</span>
+                    </div>
+                    <div class="team-badge">👥 Team collaboration</div>
+                </div>
+
+                <!-- Wave Bike -->
+                <div class="project-card">
+                    <div class="project-title">
+                        Wave Bike
+                        <span class="project-links"><a href="https://www.wave.bike/" target="_blank">wave.bike</a></span>
+                    </div>
+                    <div class="project-desc">
+                        Worked on a modern website with focus on UX and performance.
+                        <ul>
+                            <li>Improved UI/UX</li>
+                            <li>Responsive design</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Modern Web Technologies</span>
+                        <span class="tech-badge">Responsive Design</span>
+                    </div>
+                    <div class="team-badge">👥 Team effort</div>
+                </div>
+
+                <!-- School Management System -->
+                <div class="project-card">
+                    <div class="project-title">
+                        School Management System
+                        <span style="font-size:0.7rem; font-weight: normal;">(In Progress)</span>
+                    </div>
+                    <div class="project-desc">
+                        Mobile app and web platform for school operations.
+                        <ul>
+                            <li>Student & staff management</li>
+                            <li>Dashboard</li>
+                            <li>Communication tools</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">React Native</span>
+                        <span class="tech-badge">NestJS</span>
+                        <span class="tech-badge">MongoDB</span>
+                    </div>
+                    <div class="team-badge">👥 Working with a team</div>
+                </div>
+
+                <!-- Crochet E-commerce Platform -->
+                <div class="project-card">
+                    <div class="project-title">
+                        Crochet E-commerce Platform
+                        <span style="font-size:0.7rem; font-weight: normal;">(In Progress)</span>
+                    </div>
+                    <div class="project-desc">
+                        Online store for handmade products.
+                        <ul>
+                            <li>Product listings</li>
+                            <li>Order management</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Laravel</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">MySQL</span>
+                    </div>
+                    <div class="team-badge">👥 Working with a team</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Projects section (creative apps + experimental) -->
+        <section>
+            <div class="section-title">✨ Additional Projects & Experiments</div>
+            <div class="additional-note">
+                <p style="font-weight: 600; margin-bottom: 0.5rem;">🎁 Personalized Letters Platform</p>
+                <p>A platform that allows users to send personalized letters to loved ones (parents, partners, or friends) for special occasions like Valentine’s Day, anniversaries, and birthdays.</p>
+                
+                <p style="font-weight: 600; margin: 1rem 0 0.5rem;">🐾 BarkParty</p>
+                <p>A fun web application that generates customized pet (cat or dog) experiences for holidays such as Christmas and Easter.</p>
+                
+                <p style="margin-top: 1rem; font-style: italic; color: #5a6e7a;">I’ve been involved in building multiple similar platforms, often collaborating with a team to deliver complete solutions. Some of these projects were experimental or client-driven, and while a few were not deployed or were later discontinued, they contributed significantly to my experience in building and scaling real-world applications.</p>
+            </div>
+        </section>
+
+        <!-- About Me + Skills -->
+        <div class="about-skills">
+            <div class="about-box">
+                <div style="font-weight: 700; font-size: 1.3rem; margin-bottom: 0.75rem; color: #1f4e5e;">👩‍💻 About Me</div>
+                <p style="margin-bottom: 1rem;">Full-stack developer focused on building real-world business solutions.<br>
+                Experience in e-commerce, APIs, performance optimization, and cloud integration.<br>
+                I collaborate with a team to deliver scalable and efficient systems.</p>
+                <p>Passionate about turning complex requirements into clean, maintainable code that drives business value.</p>
+            </div>
+            <div class="skills-box">
+                <div style="font-weight: 700; font-size: 1.3rem; margin-bottom: 0.75rem; color: #1f4e5e;">🛠️ Technical Skills</div>
+                <div class="skills-list">
+                    <span class="skill-item">NestJS</span>
+                    <span class="skill-item">Laravel</span>
+                    <span class="skill-item">Node.js</span>
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">MySQL</span>
+                    <span class="skill-item">MongoDB (Mongoose)</span>
+                    <span class="skill-item">AWS S3</span>
+                    <span class="skill-item">Jest</span>
+                    <span class="skill-item">Docker</span>
+                </div>
+                <hr>
+                <div style="font-size: 0.85rem; color: #2e6a78; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: space-between;">
+                    <span>⚡ Backend · Frontend · Cloud</span>
+                    <span>🐳 DevOps · Testing</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team collaboration emphasis -->
+        <section style="margin-top: 1rem;">
+            <div class="section-title">🤝 Team Collaboration</div>
+            <div style="background: #F7FCFE; border-radius: 1.2rem; padding: 1rem 1.5rem; border-left: 6px solid #2c7a6e;">
+                <p>I thrive in collaborative environments and have consistently worked with teams to deliver complete, reliable solutions. From backend architecture and API design to frontend polish and performance tuning — shared ownership and clear communication drive the best outcomes.</p>
+            </div>
+        </section>
+
+        <!-- Contact footer -->
+        <div class="contact-footer">
+            <div>
+                <strong style="font-size: 1rem; color: #1f4e5e;">📫 Let's connect</strong>
+                <div class="contact-links" style="margin-top: 0.5rem;">
+                    <a href="mailto:rita.alam39@gmail.com">rita.alam39@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/rita-alam-273996222" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/rita346" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div style="font-size: 0.75rem; color: #5a7c8a;">
+                Open to opportunities · Remote · Worldwide
+            </div>
+        </div>
+        
+        <!-- footer note -->
+        <div style="text-align: center; margin-top: 1.2rem; font-size: 0.7rem; color: #8ba6b3;">
+            Full‑stack portfolio — e‑commerce · dashboards · backend architecture · cloud integration
+        </div>
+    </div>
+</div>
+</body>
+</html>
